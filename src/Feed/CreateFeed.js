@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Form from '../component/form';
 import { useState } from 'react';
+import { environment } from '../enivronment/environment';
 const CreateFeed = ({props,api_select,operation}) =>{
 const [MultiInput, setuserInput] = useState(
     {
@@ -31,11 +32,13 @@ const [MultiInput, setuserInput] = useState(
         body: JSON.stringify(newrecord),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX2lkIjoiNjJjYzA4YmZiYTY0ZjA5N2Q1MDNiMGI5Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjkxNjU5NjA1LCJpc3MiOiJodHRwczpcL1wvYXBwcy5jZWRjb21tZXJjZS5jb20iLCJ0b2tlbl9pZCI6IjYyZjM3OWQ1ZmE0NGYyNDQxNzAzMTc3MiJ9.BDxDs0e6D2cn5ZMzog4IASXEhFyYGu-yoP9McciGNlmmHq3jlJ-nhlg7INYDFbRnkdQJHiGc1kbiqvgpXPTQ3WsrW5RzP8D8CStHwXFvJ5kLs1nnoFWB0TknfwZ8xaBZxyTRZCJGxTHfUgb1D2jNPlgXWdwYjb0RVOVbg9GtT-s5AxzxLxzT2MHVBJxddbwHwwbkPha7bqWEQMiEnE_JyB38eQwk5Nrc3s91B9In0Wx_dZTBOkWW2f2N6gpmxafiUdUZKMFTGgAKNJhGKX6A20vIqUqure_FyTZoUSL1hcxejzXE9z06T3pAtVOEfY6ljqzg25xZKprZNT9hjbRe2A"
+            'Authorization':localStorage.getItem("bearer")??""
+
+            // 'Authorization' : "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX2lkIjoiNjJjYzA4YmZiYTY0ZjA5N2Q1MDNiMGI5Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjkxNjU5NjA1LCJpc3MiOiJodHRwczpcL1wvYXBwcy5jZWRjb21tZXJjZS5jb20iLCJ0b2tlbl9pZCI6IjYyZjM3OWQ1ZmE0NGYyNDQxNzAzMTc3MiJ9.BDxDs0e6D2cn5ZMzog4IASXEhFyYGu-yoP9McciGNlmmHq3jlJ-nhlg7INYDFbRnkdQJHiGc1kbiqvgpXPTQ3WsrW5RzP8D8CStHwXFvJ5kLs1nnoFWB0TknfwZ8xaBZxyTRZCJGxTHfUgb1D2jNPlgXWdwYjb0RVOVbg9GtT-s5AxzxLxzT2MHVBJxddbwHwwbkPha7bqWEQMiEnE_JyB38eQwk5Nrc3s91B9In0Wx_dZTBOkWW2f2N6gpmxafiUdUZKMFTGgAKNJhGKX6A20vIqUqure_FyTZoUSL1hcxejzXE9z06T3pAtVOEfY6ljqzg25xZKprZNT9hjbRe2A"
             },
         };
-    
-        fetch("http://home.local.cedcommerce.com/amazon/spapi/postData", requestOptions).then(response=>response.json()).then(response => {
+        let url = localStorage.getItem("base_url");
+        fetch(url, requestOptions).then(response=>response.json()).then(response => {
                 if (response.success) {
                     console.log('aya',response['data']);
                     setTest(response['data'])

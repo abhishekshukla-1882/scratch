@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { environment } from './enivronment/environment';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+localStorage.setItem("base_url",environment.base_url);
+localStorage.setItem("bearer",environment.bearer);
 root.render(
   // <React.StrictMode>
     <App />

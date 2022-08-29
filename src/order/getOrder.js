@@ -31,11 +31,13 @@ const GetOrder = ({props,api_select,operation}) => {
             body: JSON.stringify(newrecord),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX2lkIjoiNjJjYzA4YmZiYTY0ZjA5N2Q1MDNiMGI5Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjkyMTgxMzUzLCJpc3MiOiJodHRwczpcL1wvYXBwcy5jZWRjb21tZXJjZS5jb20iLCJ0b2tlbl9pZCI6IjYyZmI2ZmU5MDBjZjc5Y2M0NzA5N2ExMiJ9.HSk-HNaBeOEZezRCM7UFsQFp7JSF_iCPXbmqL2bnPogtzo1rJakLiH81_C7H9BIf_Tyf_RdNcJXrShmJAHdbRLhUpZL71OkgM9O117mdP9RXbDqzlVx5XBQaP54rhvwRnTdmTkVbgELlOVJVptDq2hWZL6CUW4YLAj7iNm1DrfTb-KMwB4hELOTQa2Y3Lmobal8Nd7WlVL6E1ekFB5qH7m41qnwbi1pwd2sWjOICGuHzpCWbV1Qgi-nwGEQIg8ZmsMgqFxr1TCvgqb50M6Zvs4F0_IUZiyhfvuurU7ySnM81Ys7L6gI9p9KIbaIvPHh27Ji6oMSjVJ-8ltsveW5WvA"
+                'Authorization':localStorage.getItem("bearer")??""
+
+                // 'Authorization': "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX2lkIjoiNjJjYzA4YmZiYTY0ZjA5N2Q1MDNiMGI5Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjkyMTgxMzUzLCJpc3MiOiJodHRwczpcL1wvYXBwcy5jZWRjb21tZXJjZS5jb20iLCJ0b2tlbl9pZCI6IjYyZmI2ZmU5MDBjZjc5Y2M0NzA5N2ExMiJ9.HSk-HNaBeOEZezRCM7UFsQFp7JSF_iCPXbmqL2bnPogtzo1rJakLiH81_C7H9BIf_Tyf_RdNcJXrShmJAHdbRLhUpZL71OkgM9O117mdP9RXbDqzlVx5XBQaP54rhvwRnTdmTkVbgELlOVJVptDq2hWZL6CUW4YLAj7iNm1DrfTb-KMwB4hELOTQa2Y3Lmobal8Nd7WlVL6E1ekFB5qH7m41qnwbi1pwd2sWjOICGuHzpCWbV1Qgi-nwGEQIg8ZmsMgqFxr1TCvgqb50M6Zvs4F0_IUZiyhfvuurU7ySnM81Ys7L6gI9p9KIbaIvPHh27Ji6oMSjVJ-8ltsveW5WvA"
             },
         };
-
-        fetch("http://home.local.cedcommerce.com/amazon/spapi/getData", requestOptions).then(response => response.json()).then(response => {
+        let url = localStorage.getItem("base_url");
+        fetch(url, requestOptions).then(response => response.json()).then(response => {
             if (response.success) {
 
                 console.log('aya', response['data']);

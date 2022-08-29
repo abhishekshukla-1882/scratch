@@ -35,6 +35,10 @@ const Form = () => {
     //   'recomendation':['getFeeds','createFeed','getFeed','cancelFeed','createFeedDocument','getFeedDocument'],
     'seler': ['getMarketplaceParticipations']
   }
+  const [url,setUrl] = useState("https://amazon.demo.sellernext.com/home/public/")
+  const[bearer,setBearer] = useState("eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX2lkIjoiNjJjYzA4YmZiYTY0ZjA5N2Q1MDNiMGI5Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjkyMTgxMzUzLCJpc3MiOiJodHRwczpcL1wvYXBwcy5jZWRjb21tZXJjZS5jb20iLCJ0b2tlbl9pZCI6IjYyZmI2ZmU5MDBjZjc5Y2M0NzA5N2ExMiJ9.HSk-HNaBeOEZezRCM7UFsQFp7JSF_iCPXbmqL2bnPogtzo1rJakLiH81_C7H9BIf_Tyf_RdNcJXrShmJAHdbRLhUpZL71OkgM9O117mdP9RXbDqzlVx5XBQaP54rhvwRnTdmTkVbgELlOVJVptDq2hWZL6CUW4YLAj7iNm1DrfTb-KMwB4hELOTQa2Y3Lmobal8Nd7WlVL6E1ekFB5qH7m41qnwbi1pwd2sWjOICGuHzpCWbV1Qgi-nwGEQIg8ZmsMgqFxr1TCvgqb50M6Zvs4F0_IUZiyhfvuurU7ySnM81Ys7L6gI9p9KIbaIvPHh27Ji6oMSjVJ-8ltsveW5WvA")
+  // setUrl('http://home.local.cedcommerce.com/amazon/spapi/getData');
+  // setUrl("");
   const [MultiInput, setuserInput] = useState(
     {
       api_select: "",
@@ -61,10 +65,12 @@ const Form = () => {
     console.log('done');
   }
 
+
   useEffect(() => {
   }, [apiData]);
 
-  useEffect(()=>{},[select])
+  useEffect(()=>{},[select]);
+// useEffect(()=>[url]);
 
 
   return (
@@ -107,7 +113,7 @@ const Form = () => {
                 </div>
               </div>
               {/* Report form Tags  */}
-              {forrm === 'getReports' && <GetReports props={setApiData} api_select={select} operation={forrm} />}
+              {forrm === 'getReports' && <GetReports props={setApiData} api_select={select} operation={forrm}  />}
               {forrm === 'getReportDoc' && <GetReportDoc props={setApiData} api_select={select} operation={forrm} />}
               {forrm === 'getReport' && <GetReport props={setApiData} api_select={select} operation={forrm}/>}
               {forrm === 'getReportSchedules' && <GetReportSchedules props={setApiData} api_select={select} operation={forrm} />}
